@@ -1,0 +1,24 @@
+[Unit]
+Description=nexus service
+After=network.target
+  
+[Service]
+Environment="SONATYPE_DIR=/opt/sonatype"
+Environment="NEXUS_HOME=/opt/sonatype/nexus"
+Environment="NEXUS_DATA=/nexus-data"
+Environment="NEXUS_CONTEXT="
+Environment="SONATYPE_WORK=/opt/sonatype/sonatype-work"
+Environment="JAVA_HOME=/usr/local/openjdk-8"
+Environment="INSTALL4J_HOME=/usr/local/openjdk-8"
+Environment="INSTALL4J_ADD_VM_PARAMS="-Xms2703m -Xmx2703m -XX:MaxDirectMemorySize=2703m -Djava.util.prefs.userRoot=/nexus-data/javaprefs"
+
+Type=forking
+LimitNOFILE=65536
+ExecStart=/opt/sonatype/nexus/bin/nexus start
+ExecStop=/opt/sonatype/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+TimeoutSec=600
+  
+[Install]
+WantedBy=multi-user.target
