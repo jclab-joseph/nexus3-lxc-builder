@@ -16,6 +16,8 @@ jobs:
           context: .
           file: Dockerfile
           push: false
+          cache-from: type=gha
+          cache-to: type=gha
           outputs: type=local,dest=output
       - name: Release
         uses: softprops/action-gh-release@v1
