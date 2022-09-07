@@ -25,7 +25,7 @@ RUN cd /tmp && \
     mv nexus-${NEXUS_VERSION} $NEXUS_HOME && \
     chown -R nexus:nexus ${SONATYPE_WORK} && \
     mv ${SONATYPE_WORK}/nexus3 ${NEXUS_DATA} && \
-    ln -s ${NEXUS_DATA} ${SONATYPE_WORK}/nexus
+    ln -s ${NEXUS_DATA} ${SONATYPE_WORK}/nexus3
 
 ADD ["files", "/"]
 
